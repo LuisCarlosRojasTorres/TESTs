@@ -123,13 +123,17 @@ void MainWindow::on_actionSava_as_csv_triggered()
     QTextStream qTextStream(&file);
 
     const int rowCount = mModel->rowCount();
-    const int colCount = mModel->columnCount();
+    const int colCount = mModel->columnCount(); //it will get maxNumOfColumns
 
-    for(int ix = 0; ix < rowCount; ++ix){
-        qTextStream << getValueAt(ix,0);
+    //The file is created from a QTextStream object where each element is added through << symbol
 
-        for(int jx = 0; jx < colCount; ++jx){
-            qTextStream << " , " << getValueAt(ix,jx);
+    for(int currentRow = 0; currentRow < rowCount; ++currentRow){
+        qTextStream << getValueAt(currentRow,0);
+        // Added the first element of the row
+
+        for(int currentColumn = 0; currentColumn < colCount; ++currentColumn){
+            qTextStream << " , " << getValueAt(currentRow, currentColumn);
+
         }
         qTextStream << "\n";
     }
