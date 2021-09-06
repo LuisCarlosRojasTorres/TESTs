@@ -57,6 +57,9 @@ void MainWindow::on_pB_OpenJson_clicked()
             ui->cB_value4->setCurrentIndex(value4);
 
         }
+        else{
+
+        }
 
     }
 }
@@ -82,6 +85,8 @@ void MainWindow::on_pB_SaveJson_clicked()
         obj["Value2"] = value2;
         obj["Value3"] = value3;
         obj["Value4"] = value4;
+
+        doc.setObject(obj);
 
         QByteArray data_json = doc.toJson();
         QFile output(fileName);
